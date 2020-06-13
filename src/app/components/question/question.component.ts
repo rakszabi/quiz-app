@@ -11,12 +11,33 @@ export class QuestionComponent implements OnInit {
   // @Input() questionInput = new EventEmitter<{question: Question}>();
   @Input() question: Question;
   @Output() answer = new EventEmitter<{answer: string}>();
+  buttonIsDisable: boolean;
 
-  constructor() { }
+  constructor() {
+    this.buttonIsDisable = true;
+  }
+
+  buttonDisableToggler(isDisable: boolean) {
+    this.buttonIsDisable = isDisable;
+  }
+
+  next(answerTip: string) {
+    if (this.buttonIsDisable || answerTip === '' || answerTip === undefined) {
+      console.log('Please choose an answer!');
+      // TODO: Felugró értesítés
+    } else {
+      console.log(answerTip);
+      this.answer.emit({
+        answer: answerTip
+      });
+      this.buttonDisableToggler(true);
+    }
+  }
 
   ngOnInit(): void {
     console.log('From child: ');
     console.log(this.question);
+    console.log(this.buttonIsDisable);
   }
 
 }

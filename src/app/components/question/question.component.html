@@ -3,9 +3,9 @@
     <h2>{{ question.question }}</h2>
   </mat-card-header>
   <mat-card-content>
-    <mat-button-toggle-group name="answerTip" vertical class="full-width">
-      <mat-button-toggle *ngFor="let answer of question.answers" [value]="answer" class="full-width" >{{ answer }}</mat-button-toggle>
+    <mat-button-toggle-group #answerTip="matButtonToggleGroup" vertical class="full-width">
+      <mat-button-toggle *ngFor="let answer of question.answers" [value]="answer" class="full-width" (click)="buttonDisableToggler(false)">{{ answer }}</mat-button-toggle>
     </mat-button-toggle-group>
   </mat-card-content>
 </mat-card>
-<button mat-raised-button color="primary">Megjelölöm</button>
+<button mat-raised-button color="primary" (click)="next(answerTip.value)" [disabled]="buttonIsDisable">Megjelölöm</button>
