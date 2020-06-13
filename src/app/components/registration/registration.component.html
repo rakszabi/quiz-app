@@ -1,1 +1,12 @@
-<p>registration works!</p>
+<mat-card>
+  <h1>Quiz app</h1>
+  <form (ngSubmit)="registration()">
+    <p>
+      <mat-form-field appearance="legacy">
+        <mat-label>Név</mat-label>
+        <input type="text" [(ngModel)]="name" name="name" matInput placeholder="Név" required>
+      </mat-form-field>
+    </p>
+    <button mat-raised-button color="primary" type="submit">Kezdés</button>
+  </form>
+</mat-card>

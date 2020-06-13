@@ -1,1 +1,2 @@
-<app-question></app-question>
+<app-registration *ngIf="!gameIsRunning" (setName)="setName($event)"></app-registration>
+<app-question *ngIf="gameIsRunning" [question]="actQuestion" (answer)="addNewAnswer($event)"></app-question>

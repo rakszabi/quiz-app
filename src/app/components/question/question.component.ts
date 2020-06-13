@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Question } from '../../models/question';
-import { QuestionService } from '../../services/question.service';
 
 @Component({
   selector: 'app-question',
@@ -9,15 +8,15 @@ import { QuestionService } from '../../services/question.service';
 })
 export class QuestionComponent implements OnInit {
 
-  questions: Question[];
+  // @Input() questionInput = new EventEmitter<{question: Question}>();
+  @Input() question: Question;
+  @Output() answer = new EventEmitter<{answer: string}>();
 
-  constructor(private questionService: QuestionService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.questionService.getQuestions().subscribe(questions => {
-      this.questions = questions;
-      console.log(this.questions);
-    });
+    console.log('From child: ');
+    console.log(this.question);
   }
 
 }
