@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
 
   questions: Question[];
   gameIsRunning: boolean;
+  isEnd: boolean;
   actQuestion: Question;
   numOfQuestions: number;
   numOfActQuestions: number;
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit {
     private answerService: AnswerService
   ) {
     this.gameIsRunning = false;
+    this.isEnd = false;
     this.actAnswersObj = {
       name: '',
       answers: [],
@@ -33,7 +35,6 @@ export class AppComponent implements OnInit {
   }
 
   setName(name: {name: string}) {
-    console.log('Hello ' + name.name);
     this.actAnswersObj.name = name.name;
     this.gameIsRunning = true;
     this.begin();
@@ -45,15 +46,15 @@ export class AppComponent implements OnInit {
     this.numOfQuestions = this.questions.length;
   }
 
-  addNewAnswer(answer: {answer: string}) {
-    console.log('Ejha, bejött egy új válasz: ' + answer.answer);
+  addNewAnswer(answer: {answer: string, time: number}) {
     this.actAnswersObj.answers.push(answer.answer);
-    this.actAnswersObj.times.push(1);
-    // TODO: add real time number to the object
+    this.actAnswersObj.times.push(answer.time);
 
-    if (this.numOfActQuestions === this.numOfQuestions - 1) {
-      console.log('Köszi a játékot!');
+    if (this.numOfActQuestions === this.numOfQuestions - 1 && !this.isEnd) {
+      this.gameIsRunning = false;
+      this.isEnd = true;
       this.uploadNewAnswer(this.actAnswersObj);
+
     } else {
       this.numOfActQuestions++;
       this.actQuestion = this.questions[this.numOfActQuestions];
@@ -67,7 +68,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.questionService.getQuestions().subscribe(questions => {
       this.questions = questions;
-      console.log(this.questions);
     });
   }
 }

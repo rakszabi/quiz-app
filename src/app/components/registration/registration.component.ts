@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registration',
@@ -10,18 +11,22 @@ export class RegistrationComponent implements OnInit {
   name: string;
   @Output() setName = new EventEmitter<{name: string}>();
 
-  constructor() { }
+  constructor( private snackBar: MatSnackBar) { }
 
   registration() {
-    console.log('name: ' + this.name);
     if (this.name === undefined || this.name === '') {
-      console.log('Kérlek adj meg egy nevet!');
+      this.openSnackBar();
     } else {
-      console.log('Jó játékot!');
       this.setName.emit({
         name: this.name
       });
     }
+  }
+
+  openSnackBar() {
+    this.snackBar.open('Kérlek add meg a neved!', 'Rendben', {
+      duration: 3000
+    });
   }
 
   ngOnInit(): void {

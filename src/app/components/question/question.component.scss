@@ -5,3 +5,68 @@
 button {
   width: 100%;
 }
+
+#time-left {
+  position: absolute;
+  // top: 8px;
+  // right: 5px;
+  z-index: 10;
+  font-weight: 600;
+  font-size: 15px;
+  color: white;
+  // background-color: #3f51b5;
+  // width: 2.25rem;
+  // height: 2.25rem;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 50%;
+  transition: ease .2s;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.choose-btn {
+  margin-top: 1rem;
+}
+
+.container {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wrapper {
+  padding-top: 2rem;
+  padding-bottom: 1.2rem;
+}
+
+@media only screen and (min-width: 576px) {
+  .container {
+    width: 540px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .container {
+    width: 720px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .container {
+    width: 960px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .container {
+    width: 1140px;
+  }
+}

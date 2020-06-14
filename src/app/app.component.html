@@ -1,2 +1,5 @@
-<app-registration *ngIf="!gameIsRunning" (setName)="setName($event)"></app-registration>
+<app-registration *ngIf="!gameIsRunning && !isEnd" (setName)="setName($event)"></app-registration>
 <app-question *ngIf="gameIsRunning" [question]="actQuestion" (answer)="addNewAnswer($event)"></app-question>
+<div class="vertical-align" *ngIf="isEnd">
+  <h1>Köszönjünk, hogy velünk játszottál!</h1>
+</div>
