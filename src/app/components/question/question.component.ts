@@ -53,6 +53,7 @@ export class QuestionComponent implements OnInit {
 
       } else {
         this.timeLeft = this.TIME;
+        this.timeLeftBtnColor = '#3f51b5';
         this.answer.emit({
           answer: '-',
           time: 0
@@ -76,6 +77,7 @@ export class QuestionComponent implements OnInit {
       });
       this.timeLeft = this.TIME;
       this.buttonDisableToggler(true);
+      this.timeLeftBtnColor = '#3f51b5';
     }
   }
 
