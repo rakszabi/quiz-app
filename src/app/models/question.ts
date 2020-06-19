@@ -3,4 +3,5 @@ export interface Question {
   question: string;
   answers: string[];
   order?: number;
+  correctAnswer?: string;
 }

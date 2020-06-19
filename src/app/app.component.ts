@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
 
   addNewAnswer(answer: {answer: string, time: number}) {
     this.actAnswersObj.answers.push(answer.answer);
-    this.actAnswersObj.times.push(answer.time);
+    this.actAnswersObj.times.push(Math.round(answer.time * 100) / 100);
 
     if (this.numOfActQuestions === this.numOfQuestions - 1 && !this.isEnd) {
       this.gameIsRunning = false;

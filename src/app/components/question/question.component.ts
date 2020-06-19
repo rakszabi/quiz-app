@@ -56,7 +56,7 @@ export class QuestionComponent implements OnInit {
         this.timeLeftBtnColor = '#3f51b5';
         this.answer.emit({
           answer: '-',
-          time: 0
+          time: 10
         });
       }
       this.timeLeftInSec = Math.ceil(this.timeLeft);
